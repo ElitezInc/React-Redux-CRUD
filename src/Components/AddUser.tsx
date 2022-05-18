@@ -1,7 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { userAdded } from "../features/users/usersSlice";
 import { useNavigate } from "react-router-dom";
+import { nanoid } from "@reduxjs/toolkit";
 
 export default function AddUser() {
   const dispatch = useDispatch();
@@ -14,13 +15,11 @@ export default function AddUser() {
   const handleName = (e: any) => setName(e.target.value);
   const handleEmail = (e: any) => setEmail(e.target.value);
 
-  const usersAmount = useSelector((state: any) => state.users.data.length);
-
   const handleClick = () => {
     if (name && email) {
       dispatch(
         userAdded({
-          id: (usersAmount + 1) + '',
+          id: nanoid() + '',
           name,
           email,
         })

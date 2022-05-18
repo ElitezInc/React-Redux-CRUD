@@ -8,8 +8,8 @@ export default function EditUser() {
   const { id } = useParams()
   const navigate = useNavigate();
 
-  const user: any = useSelector((state: any) =>
-      state.users.data.find((user: any) => user.id === id)
+  const user: any = useSelector((state: any) => 
+    state.users.data.find((user: any) => user.id + '' === id)
   );
 
   const dispatch = useDispatch();
